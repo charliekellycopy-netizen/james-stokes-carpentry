@@ -17,7 +17,7 @@ import decking from '../assets/photos/decking.jpg';
 
 /* PLACEHOLDER: every contact detail below is a placeholder. Replace before launch. */
 export const business = {
-  name: 'James Stoke',
+  name: 'James Stokes',
   trade: 'Carpentry & Joinery',
   phone: '020 0000 0000',
   phoneHref: 'tel:+442000000000',
@@ -238,7 +238,7 @@ export const process = [
  */
 export const testimonials = [
   {
-    quote: 'Turned up when he said he would, kept the place tidy and the alcove cupboards look like they were always there.',
+    quote: 'Turned up on the day we agreed, kept the place tidy and the alcove cupboards look like they were always there.',
     name: 'Sarah',
     area: 'Islington',
   },
@@ -248,7 +248,7 @@ export const testimonials = [
     area: 'Clapham',
   },
   {
-    quote: 'He found a way to fit wardrobes into a room with sloping ceilings that two other firms said couldn’t be done.',
+    quote: 'James found a way to fit wardrobes into a room with sloping ceilings that two other firms said couldn’t be done.',
     name: 'Anna',
     area: 'Hackney',
   },

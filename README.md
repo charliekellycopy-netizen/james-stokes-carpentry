@@ -1,6 +1,6 @@
-# James Stoke Carpentry & Joinery
+# James Stokes Carpentry & Joinery
 
-A five-page website for James Stoke, a carpenter and joiner in London. It's built with [Astro](https://astro.build) and published with GitHub Pages:
+A five-page website for James Stokes, a carpenter and joiner in London. It's built with [Astro](https://astro.build) and published with GitHub Pages:
 https://charliekellycopy-netizen.github.io/james-stoke-carpentry/
 
 James is a test client, so the content is placeholder throughout. See **Placeholder content** below.

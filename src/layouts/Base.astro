@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { title, description, overlayHeader = false } = Astro.props;
-const fullTitle = title === 'Home' ? 'James Stoke | Carpenter and Joiner in London' : `${title} | James Stoke, London Carpenter`;
+const fullTitle = title === 'Home' ? 'James Stokes | Carpenter and Joiner in London' : `${title} | James Stokes, London Carpenter`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
