@@ -1,0 +1,113 @@
+---
+import { business, nav, services } from '../data/site';
+import { url } from '../lib/url';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer section--dark">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <p class="label site-footer__heading">Contact</p>
+        <ul role="list" class="site-footer__list">
+          <li><a href={business.phoneHref}>{business.phone}</a></li>
+          <li><a href={`mailto:${business.email}`}>{business.email}</a></li>
+          <li class="soft">{business.hours}</li>
+        </ul>
+      </div>
+      <div>
+        <p class="label site-footer__heading">Pages</p>
+        <ul role="list" class="site-footer__list">
+          <li><a href={url()}>Home</a></li>
+          {nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <p class="label site-footer__heading">Services</p>
+        <ul role="list" class="site-footer__list">
+          {services.slice(0, 6).map((s) => <li><a href={url(`services/#${s.slug}`)}>{s.name}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <p class="label site-footer__heading">Area</p>
+        <p class="soft">{business.area}.</p>
+        <a class="arrow-link site-footer__more" href={url('about/#areas')}>Areas covered <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="site-footer__mark">
+      <p class="site-footer__wordmark display" aria-hidden="true">James Stoke</p>
+    </div>
+
+    <div class="site-footer__base label">
+      <span>© {year} James Stoke Carpentry &amp; Joinery</span>
+      <span>London, UK · 51.5072° N 0.1276° W</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: clamp(64px, 8vw, 112px);
+    padding-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px 32px;
+  }
+
+  .site-footer__heading {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-dark);
+    color: var(--on-dark-soft);
+  }
+
+  .site-footer__list {
+    display: grid;
+    gap: 8px;
+  }
+
+  .site-footer__list a {
+    text-decoration: none;
+  }
+
+  .site-footer__list a:hover {
+    color: var(--timber-light);
+  }
+
+  .soft {
+    color: var(--on-dark-soft);
+  }
+
+  .site-footer__more {
+    margin-top: 16px;
+  }
+
+  .site-footer__mark {
+    container-type: inline-size;
+    margin-top: clamp(64px, 9vw, 128px);
+  }
+
+  /* Sized to the container so the full name always fits on one line */
+  .site-footer__wordmark {
+    font-size: 11.4cqi;
+    white-space: nowrap;
+    color: var(--on-dark);
+  }
+
+  .site-footer__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-dark);
+    color: var(--on-dark-soft);
+  }
+</style>
