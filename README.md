@@ -1,7 +1,7 @@
 # James Stokes Carpentry & Joinery
 
 A five-page website for James Stokes, a carpenter and joiner in London. It's built with [Astro](https://astro.build) and published with GitHub Pages:
-https://charliekellycopy-netizen.github.io/james-stoke-carpentry/
+https://charliekellycopy-netizen.github.io/james-stokes-carpentry/
 
 James is a test client, so the content is placeholder throughout. See **Placeholder content** below.
 
@@ -11,7 +11,7 @@ Requires Node 22.23.4 or later.
 
 ```bash
 npm install
-npm run dev       # http://localhost:4321/james-stoke-carpentry/
+npm run dev       # http://localhost:4321/james-stokes-carpentry/
 npm run build     # outputs to dist/
 npm run preview
 ```
