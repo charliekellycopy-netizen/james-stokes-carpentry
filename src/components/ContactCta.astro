@@ -1,14 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 import workbench from '../assets/photos/workbench-tools.jpg';
+import kitchenRustic from '../assets/photos/kitchen-rustic.jpg';
 import { business } from '../data/site';
-import { url } from '../lib/url';
+import { url, variantOf } from '../lib/url';
+
+const warm = variantOf(Astro.url) === 'warm';
 ---
 
-<section class="cta" aria-labelledby="cta-title">
+<section class:list={['cta', { 'cta--warm': warm }]} aria-labelledby="cta-title">
   <Image
     class="cta__image"
-    src={workbench}
+    src={warm ? kitchenRustic : workbench}
     alt=""
     widths={[768, 1280, 1920, 2400]}
     sizes="100vw"
@@ -22,7 +25,7 @@ import { url } from '../lib/url';
       a visit to measure up.
     </p>
     <div class="cta__actions">
-      <a class="button button--light" href={url('contact/')}>Get a quote <span aria-hidden="true">→</span></a>
+      <a class="button button--light" href={url('contact/', Astro.url)}>Get a quote <span aria-hidden="true">→</span></a>
       <a class="button cta__phone" href={business.phoneHref}>Call {business.phone}</a>
     </div>
   </div>
@@ -50,6 +53,10 @@ import { url } from '../lib/url';
     inset: 0;
     z-index: -1;
     background: linear-gradient(90deg, rgb(20 16 12 / 0.82) 0%, rgb(20 16 12 / 0.55) 55%, rgb(20 16 12 / 0.25) 100%);
+  }
+
+  .cta--warm .cta__shade {
+    background: linear-gradient(90deg, rgb(60 36 22 / 0.85) 0%, rgb(60 36 22 / 0.55) 55%, rgb(60 36 22 / 0.15) 100%);
   }
 
   .cta__inner {

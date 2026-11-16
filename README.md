@@ -5,6 +5,13 @@ https://charliekellycopy-netizen.github.io/james-stokes-carpentry/
 
 James is a test client, so the content is placeholder throughout. See **Placeholder content** below.
 
+There are two versions of the site, built from the same content:
+
+- **Original** at `/`: stone and walnut, heavy expanded capitals, mono labels, full-bleed photo hero.
+- **Warm** at `/warm/`: cream, honey oak and terracotta, serif headings, rounded photos, a split hero and slightly friendlier copy.
+
+Page bodies live in `src/views/`, and both `src/pages/` and `src/pages/warm/` render them. The warm look is a set of CSS token overrides under `:root[data-variant='warm']` in `src/styles/global.css`. A link in the footer switches between the two versions.
+
 ## Develop
 
 Requires Node 22.23.4 or later.
@@ -23,7 +30,8 @@ Pushing to `main` deploys the site through `.github/workflows/deploy.yml`, which
 | What | File |
 | --- | --- |
 | Contact details, services, projects, testimonials, boroughs | `src/data/site.ts` |
-| Pages | `src/pages/*.astro` |
+| Page content (shared by both versions) | `src/views/*.astro` |
+| Routes | `src/pages/` (original) and `src/pages/warm/` |
 | Header, footer and call to action | `src/components/` |
 | Colours, type and shared styles | `src/styles/global.css` |
 | Photos (processed by Astro's `<Image>`) | `src/assets/photos/` |

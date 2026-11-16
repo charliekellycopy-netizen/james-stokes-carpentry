@@ -13,7 +13,7 @@ const current = Astro.url.pathname;
 
 <header class:list={['site-header', { 'site-header--overlay': overlay }]}>
   <div class="container site-header__bar">
-    <a class="brand" href={url()} aria-label={`${business.name} ${business.trade}, home`}>
+    <a class="brand" href={url('', Astro.url)} aria-label={`${business.name} ${business.trade}, home`}>
       <span class="brand__name">James Stokes</span>
       <span class="brand__trade label">Carpentry &amp; Joinery</span>
     </a>
@@ -22,7 +22,7 @@ const current = Astro.url.pathname;
       <ul role="list">
         {
           nav.map((item) => {
-            const href = url(item.href);
+            const href = url(item.href, Astro.url);
             return (
               <li>
                 <a href={href} aria-current={current.startsWith(href) ? 'page' : undefined}>
@@ -46,8 +46,8 @@ const current = Astro.url.pathname;
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav class="container" aria-label="Mobile">
       <ul role="list">
-        <li><a href={url()}>Home</a></li>
-        {nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
+        <li><a href={url('', Astro.url)}>Home</a></li>
+        {nav.map((item) => <li><a href={url(item.href, Astro.url)}>{item.label}</a></li>)}
       </ul>
       <div class="mobile-menu__contact label">
         <a href={business.phoneHref}>{business.phone}</a>
@@ -123,11 +123,12 @@ const current = Astro.url.pathname;
   }
 
   .brand__name {
-    font-weight: 800;
-    font-stretch: 118%;
-    font-size: 1.25rem;
+    font-family: var(--display-font);
+    font-weight: var(--display-weight);
+    font-stretch: var(--display-stretch);
+    font-size: calc(1.25rem * var(--display-scale));
     letter-spacing: -0.01em;
-    text-transform: uppercase;
+    text-transform: var(--display-transform);
     line-height: 1;
   }
 
@@ -178,6 +179,7 @@ const current = Astro.url.pathname;
 
   .menu-toggle {
     min-height: 44px;
+    border-radius: var(--radius-button);
     padding: 10px 16px;
     border: 1px solid currentColor;
     background: none;
@@ -217,10 +219,11 @@ const current = Astro.url.pathname;
     display: block;
     padding-block: 16px;
     border-bottom: 1px solid var(--line-dark);
-    font-size: 2rem;
-    font-weight: 800;
-    font-stretch: 118%;
-    text-transform: uppercase;
+    font-size: calc(2rem * var(--display-scale));
+    font-family: var(--display-font);
+    font-weight: var(--display-weight);
+    font-stretch: var(--display-stretch);
+    text-transform: var(--display-transform);
     text-decoration: none;
     line-height: 1.1;
   }

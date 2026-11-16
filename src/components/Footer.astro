@@ -1,8 +1,9 @@
 ---
 import { business, nav, services } from '../data/site';
-import { url } from '../lib/url';
+import { otherVersion, url, variantOf } from '../lib/url';
 
 const year = new Date().getFullYear();
+const warm = variantOf(Astro.url) === 'warm';
 ---
 
 <footer class="site-footer section--dark">
@@ -19,20 +20,20 @@ const year = new Date().getFullYear();
       <div>
         <p class="label site-footer__heading">Pages</p>
         <ul role="list" class="site-footer__list">
-          <li><a href={url()}>Home</a></li>
-          {nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
+          <li><a href={url('', Astro.url)}>Home</a></li>
+          {nav.map((item) => <li><a href={url(item.href, Astro.url)}>{item.label}</a></li>)}
         </ul>
       </div>
       <div>
         <p class="label site-footer__heading">Services</p>
         <ul role="list" class="site-footer__list">
-          {services.slice(0, 6).map((s) => <li><a href={url(`services/#${s.slug}`)}>{s.name}</a></li>)}
+          {services.slice(0, 6).map((s) => <li><a href={url(`services/#${s.slug}`, Astro.url)}>{s.name}</a></li>)}
         </ul>
       </div>
       <div>
         <p class="label site-footer__heading">Area</p>
         <p class="soft">{business.area}.</p>
-        <a class="arrow-link site-footer__more" href={url('about/#areas')}>Areas covered <span aria-hidden="true">→</span></a>
+        <a class="arrow-link site-footer__more" href={url('about/#areas', Astro.url)}>Areas covered <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -42,6 +43,9 @@ const year = new Date().getFullYear();
 
     <div class="site-footer__base label">
       <span>© {year} James Stokes Carpentry &amp; Joinery</span>
+      <a class="site-footer__switch" href={otherVersion(Astro.url)}>
+        {warm ? 'View the original version' : 'View the warm version'} <span aria-hidden="true">→</span>
+      </a>
       <span>London, UK · 51.5072° N 0.1276° W</span>
     </div>
   </div>
@@ -95,9 +99,18 @@ const year = new Date().getFullYear();
 
   /* Sized to the container so the full name always fits on one line */
   .site-footer__wordmark {
-    font-size: 10.4cqi;
+    font-size: calc(10.4cqi * var(--wordmark-scale, 1));
     white-space: nowrap;
     color: var(--on-dark);
+  }
+
+  .site-footer__switch {
+    color: var(--on-dark);
+    text-decoration: none;
+  }
+
+  .site-footer__switch:hover {
+    color: var(--timber-light);
   }
 
   .site-footer__base {
